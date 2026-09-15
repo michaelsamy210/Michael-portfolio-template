@@ -1,0 +1,405 @@
+@import "tailwindcss";
+
+:root {
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+
+  color: #f5f5f5;
+  background: #070707;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #070707;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #070707;
+  color: #f5f5f5;
+}
+
+body,
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: 0;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.25);
+  color: white;
+}
+
+/* GLOBAL */
+
+.site-shell {
+  position: relative;
+  isolation: isolate;
+}
+
+.site-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.035;
+
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+}
+
+.gradient-text {
+  background: linear-gradient(
+    110deg,
+    #ffffff 0%,
+    #67e8f9 45%,
+    #a78bfa 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* HERO */
+
+.hero-section {
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(34, 211, 238, 0.04),
+      transparent 35%
+    ),
+    #070707;
+}
+
+.hero-grid {
+  opacity: 0.28;
+
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+
+  background-size: 80px 80px;
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black,
+    rgba(0, 0, 0, 0.4) 60%,
+    transparent
+  );
+
+  mask-image: linear-gradient(
+    to bottom,
+    black,
+    rgba(0, 0, 0, 0.4) 60%,
+    transparent
+  );
+}
+
+.hero-orb {
+  border-radius: 9999px;
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+.hero-orb-one {
+  width: 420px;
+  height: 420px;
+  left: -160px;
+  top: 20%;
+  background: rgba(34, 211, 238, 0.08);
+}
+
+.hero-orb-two {
+  width: 380px;
+  height: 380px;
+  right: -150px;
+  bottom: 10%;
+  background: rgba(139, 92, 246, 0.07);
+}
+
+.hero-content {
+  animation: heroContentIn 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-sphere {
+  box-shadow:
+    inset 0 0 80px rgba(255, 255, 255, 0.02),
+    0 0 120px rgba(34, 211, 238, 0.04);
+
+  animation: sphereFloat 8s ease-in-out infinite;
+}
+
+.hero-cube {
+  animation: cubeFloat 7s ease-in-out infinite;
+}
+
+.hero-core {
+  animation: coreFloat 5s ease-in-out infinite;
+}
+
+/* PROJECTS */
+
+.project-card {
+  transition:
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease,
+    background 0.4s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.project-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      rgba(34, 211, 238, 0.2),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 70% 70%,
+      rgba(139, 92, 246, 0.2),
+      transparent 35%
+    ),
+    #101010;
+}
+
+.project-fallback span {
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 900;
+  letter-spacing: -0.08em;
+  color: rgba(255, 255, 255, 0.08);
+}
+
+/* REVEAL */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* CONTACT */
+
+.contact-glow {
+  background: rgba(34, 211, 238, 0.06);
+}
+
+/* CUSTOM CURSOR */
+
+.custom-cursor-dot,
+.custom-cursor-ring {
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  z-index: 9999;
+
+  pointer-events: none;
+
+  transform: translate3d(-100px, -100px, 0);
+
+  transition:
+    width 0.25s ease,
+    height 0.25s ease,
+    margin 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.custom-cursor-dot {
+  width: 6px;
+  height: 6px;
+
+  margin-left: -3px;
+  margin-top: -3px;
+
+  border-radius: 9999px;
+
+  background: #67e8f9;
+}
+
+.custom-cursor-ring {
+  width: 36px;
+  height: 36px;
+
+  margin-left: -18px;
+  margin-top: -18px;
+
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 9999px;
+}
+
+.custom-cursor-ring.cursor-hover {
+  width: 56px;
+  height: 56px;
+
+  margin-left: -28px;
+  margin-top: -28px;
+
+  border-color: rgba(103, 232, 249, 0.7);
+  background: rgba(103, 232, 249, 0.04);
+}
+
+/* ANIMATIONS */
+
+@keyframes heroContentIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sphereFloat {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-12px) scale(1.015);
+  }
+}
+
+@keyframes cubeFloat {
+  0%,
+  100% {
+    margin-top: 0;
+  }
+
+  50% {
+    margin-top: -14px;
+  }
+}
+
+@keyframes coreFloat {
+  0%,
+  100% {
+    margin-top: 0;
+  }
+
+  50% {
+    margin-top: -9px;
+  }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 767px) {
+  .hero-grid {
+    background-size: 55px 55px;
+  }
+
+  .hero-orb-one {
+    width: 280px;
+    height: 280px;
+    left: -120px;
+  }
+
+  .hero-orb-two {
+    width: 260px;
+    height: 260px;
+    right: -120px;
+  }
+
+  .hero-sphere {
+    width: 280px;
+    height: 280px;
+  }
+
+  .hero-cube {
+    width: 190px;
+    height: 190px;
+    border-radius: 2.5rem;
+  }
+
+  .hero-core {
+    width: 105px;
+    height: 105px;
+    font-size: 2rem;
+  }
+}
+
+/* FINE POINTER ONLY */
+
+@media (pointer: fine) {
+  html.custom-cursor-active,
+  html.custom-cursor-active body,
+  html.custom-cursor-active a,
+  html.custom-cursor-active button {
+    cursor: none !important;
+  }
+}
+
+@media (pointer: coarse) {
+  .custom-cursor-dot,
+  .custom-cursor-ring {
+    display: none;
+  }
+}
