@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://michaelsamy210.github.io/Michael-Samy-Portfolio/sitemap.xml
